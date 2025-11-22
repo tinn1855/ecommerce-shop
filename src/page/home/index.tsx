@@ -1,3 +1,17 @@
+import { Footer } from '@/components/common/footer/footer';
+import { Header } from '@/components/common/header';
+import { ProductSection } from '@/components/organisms/product-section';
+
 export const HomePage = () => {
-  return <div>Welcome to the Home Page!</div>;
+  const handleSearchChange = (value: string) => {
+    console.log('Search changed:', value);
+  };
+
+  return (
+    <>
+      <Header onSearchChange={handleSearchChange} />
+      <ProductSection />
+      <Footer />
+    </>
+  );
 };

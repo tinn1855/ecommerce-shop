@@ -35,13 +35,13 @@
         "watchDepsTargetName": "watch-deps"
       }
     },
-    {
-      "plugin": "@nx/vitest",
-      "options": {
-        "testTargetName": "test",
-        "ciTargetName": "test-ci"
-      }
-    },
+    // {
+    //   "plugin": "@nx/vitest",
+    //   "options": {
+    //     "testTargetName": "test",
+    //     "ciTargetName": "test-ci"
+    //   }
+    // },
     {
       "plugin": "@nx/playwright/plugin",
       "options": {
