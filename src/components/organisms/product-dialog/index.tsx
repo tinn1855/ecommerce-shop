@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from '@/components/ui/dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Product } from '@/types/products';
 import { Button } from '@/components/ui/button';
 
@@ -20,32 +14,24 @@ export function ProductDetailDialog({
   product,
   onOpenChange,
 }: ProductDetailDialogProps) {
-  // Fake data cho demo UI
-  const colors = [
-    { name: 'WHITE', value: '#fff', border: 'border-blue-500' },
-    { name: 'BLACK', value: '#111', border: '' },
-    { name: 'GRAY', value: '#888', border: '' },
-    { name: 'SILVER', value: '#c0c0c0', border: '' },
-  ];
-  const [selectedColor, setSelectedColor] = useState(colors[0].name);
   const [quantity, setQuantity] = useState(1);
   if (!product) return null;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl p-0 bg-white rounded-xl overflow-hidden">
+      <DialogContent className="max-w-full w-full sm:max-w-lg p-0 bg-white rounded-xl overflow-hidden max-h-screen overflow-y-auto">
         <div className="flex flex-col md:flex-row">
           {/* Image section */}
-          <div className="md:w-1/2 flex items-center justify-center bg-gray-50 p-8">
+          <div className="w-full md:w-1/2 flex items-center justify-center bg-gray-50 p-4 md:p-8">
             <img
               src={product.image}
               alt={product.title}
-              className="max-h-96 object-contain rounded-xl   w-full"
+              className="max-h-64 md:max-h-96 object-contain rounded-xl w-full"
             />
           </div>
           {/* Info section */}
-          <div className="md:w-1/2 p-8 flex flex-col gap-4">
-            <div className="flex gap-2 mb-2">
+          <div className="w-full md:w-1/2 p-4 md:p-8 flex flex-col gap-4">
+            <div className="flex gap-2 mb-2 flex-wrap">
               <span className="px-3 py-1 rounded-full bg-gray-200 text-xs font-semibold text-gray-700">
                 {product.category}
               </span>
@@ -53,10 +39,10 @@ export function ProductDetailDialog({
                 Featured
               </span>
             </div>
-            <h2 className="text-3xl font-bold mb-2 text-gray-900 leading-tight line-clamp-2">
+            <h2 className="text-xl md:text-3xl font-bold mb-2 text-gray-900 leading-tight line-clamp-2">
               {product.title}
             </h2>
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-2 mb-2 flex-wrap">
               <span className="flex items-center gap-1">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <svg
@@ -80,7 +66,7 @@ export function ProductDetailDialog({
             <p className="text-gray-700 text-base line-clamp-5 leading-relaxed mb-2">
               {product.description}
             </p>
-            <div className="text-2xl font-bold text-gray-900 mb-1">
+            <div className="text-xl md:text-2xl font-bold text-gray-900 mb-1">
               ${product.price.toFixed(2)}
             </div>
 
@@ -104,9 +90,9 @@ export function ProductDetailDialog({
               </div>
             </div>
             {/* Action buttons */}
-            <div className="flex gap-2 mb-4">
-              <Button className="flex-1">Add to Cart</Button>
-              <Button variant={'outline'} className="flex-1">
+            <div className="flex flex-col gap-2 mb-4 w-full">
+              <Button className="w-full">Add to Cart</Button>
+              <Button variant={'outline'} className="w-full">
                 Add to Wishlist
               </Button>
             </div>
